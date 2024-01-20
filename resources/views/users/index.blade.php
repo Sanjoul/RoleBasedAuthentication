@@ -10,11 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>User Management</title>
 </head>
 
 <body>
-
     <h3>All Users</h3>
     <a href="{{ route('users.create') }}" class="btn btn-dark">Add User</a>
 

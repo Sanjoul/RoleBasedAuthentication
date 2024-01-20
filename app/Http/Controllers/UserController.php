@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::latest()->get();
         return view('users.index', compact('users'));
     }
 
@@ -60,7 +60,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-        return view('users.show', compact('roles', 'user'));
+        return view('users.edit', compact('roles', 'user'));
     }
 
     /**
@@ -71,12 +71,12 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'required|string|min:5',
             'roles' => 'required|array'
 
         ]);
+        $$user->update($request->all());
         $user->roles()->sync($request->input('roles'));
-        $user = $user->update($request->all());
+
 
         return redirect()->route('users.index')->with('success', 'User Updated Successfully');
     }
