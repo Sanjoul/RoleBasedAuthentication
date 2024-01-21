@@ -74,7 +74,7 @@ class UserController extends Controller
             'roles' => 'required|array'
 
         ]);
-        $$user->update($request->all());
+        $user->update($request->all());
         $user->roles()->sync($request->input('roles'));
 
 
